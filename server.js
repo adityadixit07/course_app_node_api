@@ -10,8 +10,6 @@ import CourseRoutes from "./routes/CourseRoutes.js";
 import UserRoutes from "./routes/UserRoutes.js";
 import dbConnect from "./connection/dbConnect.js";
 import AdminRoutes from "./routes/AdminRoutes.js";
-import BlogRoutes from "./routes/BlogRoutes.js";
-
 dotenv.config();
 
 const app = express();
@@ -43,7 +41,6 @@ cloudinary.v2.config({
 app.use("/api/user", UserRoutes);
 app.use("/api/courses", CourseRoutes);
 app.use("/api/admin", AdminRoutes);
-app.use("/api/blog", BlogRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
@@ -51,17 +48,3 @@ app.listen(PORT, () => {
     `Server is running on port ${PORT} url: http://localhost:${PORT}`
   );
 });
-
-
-
-// for the deployment of the frontend
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static("./client/dist"));
-// }
-
-// const __dirname = path.dirname(fileURLToPath(import.meta.url));
-// const staticPath = path.join(__dirname, "./client/dist");
-// app.use(express.static(staticPath));
-// app.get("*", function (req, res) {
-//   res.sendFile(path.join(__dirname, "./client/dist/index.html"));
-// });
